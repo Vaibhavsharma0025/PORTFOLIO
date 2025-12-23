@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaibhav Sharma | Computer Science Engineering Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #2980b9;
+            --light-color: #f8f9fa;
+            --gray-color: #e9ecef;
+            --dark-gray: #6c757d;
+            --text-color: #333;
+            --light-text: #777;
+            --border-radius: 4px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--gray-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            display: inline-block;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Home Section */
+        .home-section {
+            padding-top: 150px;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .home-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .role-line {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Profile Summary */
+        .profile-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--gray-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .tech-tag {
+            background-color: #e3f2fd;
+            color: var(--secondary-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-impact {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid var(--secondary-color);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Education & Certifications */
+        .education-container, .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-item, .certification-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .education-item h3, .certification-item h3 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+
+        .education-period, .certification-org {
+            color: var(--dark-gray);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .home-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .role-line {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--box-shadow);
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .home-section {
+                padding-top: 120px;
+            }
+            
+            .home-content h1 {
+                font-size: 2rem;
+            }
+            
+            .role-line {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+            }
+            
+            .home-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .role-line {
+                font-size: 1.1rem;
+            }
+            
+            .intro {
+                font-size: 1rem;
+            }
+            
+            .skill-category, .project-card, .education-item, .certification-item {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>Vaibhav Sharma</h1>
+                </div>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="section home-section">
+        <div class="container">
+            <div class="home-content">
+                <h1>Vaibhav Sharma</h1>
+                <div class="role-line">Computer Science Engineering Student | Business Analysis & AI Systems Enthusiast</div>
+                <div class="intro">
+                    <p>Technology professional with a strong business-oriented mindset, focused on system-level problem solving and analytical thinking. I connect technical solutions with measurable business impact through strategy-driven approaches.</p>
+                </div>
+                <a href="#profile" class="btn">View My Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Summary -->
+    <section id="profile" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Profile Summary</h2>
+            </div>
+            <div class="profile-content">
+                <p>Strategy-driven Computer Science student with strong analytical and business-oriented thinking. I focus on connecting technology solutions with tangible business impact through systematic approaches.</p>
+                <p>My interests lie in AI-driven insights, automation, and system design — specifically in how these technologies can solve complex business problems, improve operational efficiency, and generate strategic advantages.</p>
+                <p>I approach problems with a balance of technical depth and strategic perspective, ensuring solutions are not only technically sound but also aligned with organizational objectives and market realities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Technical Expertise -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills & Technical Expertise</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">HTML</span>
+                        <span class="skill-item">CSS</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">AI/ML Concepts</span>
+                        <span class="skill-item">System Design Basics</span>
+                        <span class="skill-item">Automation Logic</span>
+                        <span class="skill-item">API Integration</span>
+                        <span class="skill-item">Data Structures</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Business & Analytical Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Business Analysis</span>
+                        <span class="skill-item">Strategic Thinking</span>
+                        <span class="skill-item">Customer Behavior Analysis</span>
+                        <span class="skill-item">Market Analysis</span>
+                        <span class="skill-item">Data Interpretation</span>
+                        <span class="skill-item">Insight Generation</span>
+                        <span class="skill-item">Digital Marketing Strategy</span>
+                        <span class="skill-item">Growth Analysis</span>
+                        <span class="skill-item">Communication</span>
+                        <span class="skill-item">Presentation Skills</span>
+                        <span class="skill-item">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Data-Driven AI Voice Assistant</h3>
+                        <p>AI-based assistant for retrieving and summarizing real-time data through structured workflows and automation logic.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">NewsAPI</span>
+                            <span class="tech-tag">Gemini AI</span>
+                            <span class="tech-tag">Automation Logic</span>
+                            <span class="tech-tag">System Design</span>
+                        </div>
+                        <div class="project-impact">
+                            <strong>Impact:</strong> Demonstrates AI integration, analytical thinking, and system design approach for real-time data processing.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>AI Chatbot – Automated Query Handling System</h3>
+                        <p>NLP-based chatbot concept designed for autonomous user query handling with scalable communication workflows.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">NLP Concepts</span>
+                            <span class="tech-tag">Scalable Architecture</span>
+                            <span class="tech-tag">Workflow Design</span>
+                            <span class="tech-tag">User Experience</span>
+                        </div>
+                        <div class="project-impact">
+                            <strong>Impact:</strong> Shows AI concepts, system thinking, and enterprise-style design for automated customer interaction.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Landing Page – Men's Square Clothing</h3>
+                        <p>Business-oriented frontend development project focused on UI clarity, layout, and user experience.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">UI/UX</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                        <div class="project-impact">
+                            <strong>Impact:</strong> Demonstrates web fundamentals, practical application, and business-oriented frontend development.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+            </div>
+            <div class="education-container">
+                <div class="education-item">
+                    <h3>Bachelor of Engineering – Computer Science Engineering</h3>
+                    <div class="education-period">Expected 2026</div>
+                    <p>Chandigarh University</p>
+                    <p>Focus on system design, AI/ML concepts, and software engineering fundamentals with business applications.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Senior Secondary (XII), CBSE</h3>
+                    <div class="education-period">2022</div>
+                    <p>Ludhiana</p>
+                    <p>Science stream with focus on mathematics and computer science fundamentals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Certifications</h2>
+            </div>
+            <div class="certifications-container">
+                <div class="certification-item">
+                    <h3>Introduction to Cloud Computing</h3>
+                    <div class="certification-org">NPTEL</div>
+                    <p>Fundamental concepts of cloud architecture, services, and deployment models.</p>
+                </div>
+                <div class="certification-item">
+                    <h3>Introduction to Internet of Things (IoT)</h3>
+                    <div class="certification-org">NPTEL</div>
+                    <p>IoT architecture, protocols, and applications in connected systems.</p>
+                </div>
+                <div class="certification-item">
+                    <h3>SQL: A Practical Introduction for Querying Databases</h3>
+                    <div class="certification-org">IBM</div>
+                    <p>Database querying, data manipulation, and relational database concepts.</p>
+                </div>
+                <div class="certification-item">
+                    <h3>IoT for Beginners</h3>
+                    <div class="certification-org">University of Colorado (Coursera)</div>
+                    <p>Practical introduction to IoT systems and their implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>vaibhav0025official@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+91 9465784445</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div>
+                        <h3>LinkedIn</h3>
+                       <p>
+                          <a href="https://www.linkedin.com/in/vaibhav-sharma-b8a061250/" target="_blank">
+                             linkedin.com/in/vaibhav-sharma-b8a061250
+                           </a>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Ludhiana, Punjab, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Vaibhav Sharma</h3>
+                <p>Computer Science Engineering Student | Business Analysis & AI Systems Enthusiast</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/vaibhav-sharma-b8a061250/" target="_blank" aria-label="LinkedIn">
+  <i class="fab fa-linkedin"></i>
+</a>
+                    <a href="https://github.com/vaibhavsharma" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com/vaibhavsharma" target="_blank" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <p class="copyright">© 2023 Vaibhav Sharma. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
